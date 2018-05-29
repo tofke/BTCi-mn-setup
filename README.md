@@ -47,8 +47,15 @@ btci@mn2:~/.XBI$ ll xbi.conf
 lrwxrwxrwx 1 btci btci 9 May 29 20:39 xbi.conf -> btci.conf
 
 ```
+6 Go back to your $HOME folder and download the updated binaries : 
+```
+cd
+wget -q https://github.com/tofke/BTCi-mn-setup/releases/download/3.0.6/xbi-linux-$(arch).tar.gz
+tar zxvf xbi-linux-$(arch).tar.gz
+```
+(will decompress to $HOME/bin wich is in $PATH)
 
-6 restart your node with new binary : 
+7 restart your node with new binary : 
 ```
 xbid
 ```
@@ -59,8 +66,8 @@ xbid
 btci@mn2:~$ xbid 
 XBI server starting
 ```
-7 check if it runs ... 
+8 check if it runs ... 
 ```
 xbi-cli getinfo
 ```
-... to be continued ... 
+## ... to be continued ... 
