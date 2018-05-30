@@ -1,8 +1,9 @@
 # BTCi-mn-setup
 Bitcoin icognito masternode setup guide for Ubuntu Linux 16.04 (x86_64 &amp; aarch64)
 
+Complete setup guide to be written ... 
 
-if you just upgraded from BTCi to XBI, try these steps : 
+## NOTE : if you just upgraded from BTCi to XBI, try these steps : 
 
 1 stop your VPS node : 
 ```
@@ -37,30 +38,30 @@ cd .XBI
 ```
 (same as .BTCi)
 
-5 Symlink config file : 
+5 Symlink config file, so you won't have to create a new one : 
+(it's just a ticker name change and a bug correction also)
 ```
 ln -s btci.conf xbi.conf
 ```
-result is something like : 
+The result is something like : 
 ```
 btci@mn2:~/.XBI$ ll xbi.conf 
 lrwxrwxrwx 1 btci btci 9 May 29 20:39 xbi.conf -> btci.conf
 
 ```
-6 Go back to your $HOME folder and download the updated binaries : 
+6 Go back to your $HOME folder (type 'cd') and download the updated binaries : 
 ```
 cd
 wget -q https://github.com/tofke/BTCi-mn-setup/releases/download/3.0.6/xbi-linux-$(arch).tar.gz
 tar zxvf xbi-linux-$(arch).tar.gz
 ```
-(will decompress to $HOME/bin wich is in $PATH)
+NOTE : $(arch) will result on your system's CPU architecture (x86-64 or aarch64)
+(will decompress to $HOME/bin wich is in $PATH on Ubuntu)
 
 7 restart your node with new binary : 
 ```
 xbid
 ```
-(supposing you have it in your $PATH : for example, create a folder "bin" in your $HOME)
-
 => should do this : 
 ```
 btci@mn2:~$ xbid 
@@ -70,4 +71,4 @@ XBI server starting
 ```
 xbi-cli getinfo
 ```
-## ... to be continued ... 
+## ... to be completed ... 
