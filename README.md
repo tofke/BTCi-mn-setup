@@ -5,7 +5,7 @@ Complete setup guide to be written ...
 
 ## NOTE : if you just upgraded from BTCi to XBI, follow these steps : 
 
-1 Connect to your VPS (as the user running the wallet) and stop the masternode : 
+1) Connect to your VPS (as the user running the wallet) and stop the masternode : 
 ```
 btci-cli stop
 ```
@@ -14,17 +14,19 @@ check the last line in debug.log :
 ```
 tail -1 .BTCi/debug.log
 ```
-=> should say " DATE hour : Shutdown: done "
+--> should say " DATE hour : Shutdown: done "
+
 (if not, wait a few more seconds : you MUST wait untill "Shutdown: done" is the last line in debug.log)
 
-2 BACKUP your existing wallet/folder : 
+2) BACKUP your existing wallet/folder : 
 ```
 tar zcf BTCi.tgz .BTCi
 ```
 This command creates an archive of the whole .BTCi folder in a file named "BTCi.tgz)
 
-3 Symlink previous folder to new name : 
-(a sumbolic link is like a shortcut : this command does not create a new folder but an "alias" with the new name)
+3) Symlink previous folder to new name : 
+
+(a symbolic link is like a shortcut : this command does not create a new folder but an "alias" with the new name)
 ```
 ln -s .BTCi .XBI
 ```
@@ -35,13 +37,14 @@ btci@mn2:~$ ll .XBI
 lrwxrwxrwx 1 btci btci 5 May 29 20:41 .XBI -> .BTCi/
 ```
 
-4 Got to the datadir (folder containing th Bitcoin incognito blockchain and wallet files) : 
+4) Got to the datadir (folder containing th Bitcoin incognito blockchain and wallet files) : 
 ```
 cd .XBI
 ```
 (same as .BTCi, as mentionned before .XBI is a symbolic link to .BTCi)
 
-5 Symlink config file, so you won't have to create a new one : 
+5) Symlink config file, so you won't have to create a new one : 
+
 (it's just a ticker name change and a bug correction also)
 ```
 ln -s btci.conf xbi.conf
@@ -53,31 +56,32 @@ lrwxrwxrwx 1 btci btci 9 May 29 20:39 xbi.conf -> btci.conf
 ```
 This will permit the "xbi" tools to see your previously created configuration with "btci" tools.
 
-6 Go back to your $HOME folder (type 'cd') and download the updated binaries : 
+6) Go back to your $HOME folder (type 'cd') and download the updated binaries : 
 ```
 cd
 wget -q https://github.com/tofke/BTCi-mn-setup/releases/download/3.0.6/xbi-linux-$(arch).tar.gz
 tar zxvf xbi-linux-$(arch).tar.gz
 ```
-NOTE : $(arch) will result on your system's CPU architecture (x86-64 or aarch64)
+### NOTE : $(arch) will result on your system's CPU architecture (x86-64 or aarch64)
+
 (the tar command will decompress to $HOME/bin wich is in $PATH on Ubuntu)
 
-7 restart your node with new binary : 
+7) restart your node with new binary : 
 ```
 xbid
 ```
-=> should do this : 
+ --> should do this : 
 ```
 btci@mn2:~$ xbid 
 XBI server starting
 ```
-8 check if it runs ... 
+8) check if it runs ... 
 ```
 xbi-cli getinfo
 ```
-9 Check the status of your masternode in your local GUI wallet (Windows, Mac or Linux)
+9) Check the status of your masternode in your local GUI wallet (Windows, Mac or Linux)
 
-10 Enjoy ...
+10) Enjoy ...
 Your Bitcoin Incognito node is up to date.
 The new ticker XBI does take effect at block 50000 (see block explorer at http://explorer.bitcoinincognito.com/)
 
