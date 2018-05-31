@@ -62,7 +62,7 @@ cd
 wget -q https://github.com/tofke/BTCi-mn-setup/releases/download/3.0.6/xbi-linux-$(arch).tar.gz
 tar zxvf xbi-linux-$(arch).tar.gz
 ```
-### NOTE : $(arch) will result on your system's CPU architecture (x86-64 or aarch64)
+#### NOTE : $(arch) will result on your system's CPU architecture (x86-64 or aarch64)
 
 (the tar command will decompress to $HOME/bin wich is in $PATH on Ubuntu)
 
@@ -82,7 +82,11 @@ xbi-cli getinfo
 9) Check the status of your masternode in your local GUI wallet (Windows, Mac or Linux)
 
 10) Enjoy ...
+
 Your Bitcoin Incognito node is up to date.
-The new ticker XBI does take effect at block 50000 (see block explorer at http://explorer.bitcoinincognito.com/)
+
+The new ticker XBI does take effect at block 50000 
+
+(see block explorer at http://explorer.bitcoinincognito.com/)
 
 
