@@ -66,6 +66,11 @@ tar zxvf xbi-linux-$(arch).tar.gz
 
 (the tar command will decompress to $HOME/bin wich is in $PATH on Ubuntu)
 
+#### NOTE2 : if you installed a previous version of the BTCi wallet on Ubuntu 14.04, use this link : 
+```
+wget -q https://github.com/tofke/BTCi-mn-setup/blob/master/xbi-14.04-x86_64.tar.gz
+```
+
 7) restart your node with new binary : 
 ```
 xbid
