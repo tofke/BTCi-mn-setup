@@ -18,11 +18,13 @@ tail -1 .BTCi/debug.log
 
 (if not, wait a few more seconds : you MUST wait untill "Shutdown: done" is the last line in debug.log)
 
+NOTE : for those confused by the second command, "tail" is for reading the last lines of a file, "-1" means "just one line", and the "DATE" & "hour" in my example should be read as the actual date and hour timestamp in the log ... if you type "tail -1 debug.log" for example, you get the last 10 lines of your log ... 
+
 2) BACKUP your existing wallet/folder : 
 ```
 tar zcf BTCi.tgz .BTCi
 ```
-This command creates an archive of the whole .BTCi folder in a file named "BTCi.tgz)
+This command creates an archive of the whole .BTCi folder in a file named "BTCi.tgz"
 
 3) Symlink previous folder to new name : 
 
