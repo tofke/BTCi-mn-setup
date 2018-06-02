@@ -70,7 +70,7 @@ tar zxvf xbi-linux-$(arch).tar.gz
 
 #### NOTE2 : if you installed a previous version of the BTCi wallet on Ubuntu 14.04, use this link : 
 ```
-wget -q https://github.com/tofke/BTCi-mn-setup/blob/master/xbi-14.04-x86_64.tar.gz
+wget https://github.com/tofke/BTCi-mn-setup/releases/download/3.0.7/xbi-ubuntu-14.04-x86_64.tar.gz
 ```
 
 7) restart your node with new binary : 
