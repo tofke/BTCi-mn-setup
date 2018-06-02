@@ -72,6 +72,12 @@ tar zxvf xbi-linux-$(arch).tar.gz
 ```
 wget https://github.com/tofke/BTCi-mn-setup/releases/download/3.0.7/xbi-ubuntu-14.04-x86_64.tar.gz
 ```
+Also, on Ubuntu 14.04, you will have to add $HOME/bin to your $PATH manually : 
+```
+echo "export PATH=\$PATH:\$HOME/bin" >> ~/.bashrc
+. ~/.bashrc
+```
+Then you can run xbid and xbid-cli commands 
 
 7) restart your node with new binary : 
 ```
