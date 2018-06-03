@@ -1,7 +1,54 @@
-# BTCi-mn-setup
-Bitcoin icognito masternode setup guide for Ubuntu Linux 16.04 (x86_64 &amp; aarch64)
+# XBI-MN-setup
+## Bitcoin icognito (XBI) masternode setup guide for Ubuntu Linux
 
-Complete setup guide to be written ... 
+Complete setup guide and automated script to be written ... sorry for those not familiar with Linux cli.
+
+If you want to manually install it, you can find binaries of "headless" XBI (xbid, xbi-cli and xbi-tx) herein.
+
+Supported versions include Ubuntu 14.04 (x86_64), 16.04 (x86_64 and aarch64) and 18.04 (x86_64).
+
+### Quick start guide : 
+
+a) download binary for your platform (see above files)
+
+b) untar in your $HOME (will decompress to ~/bin)
+```
+tar zxvf xbi-ubuntu-<YourVersion>.tar.gz
+```
+
+c) create ~/.XBI folder and ~/.XBI/xbi.conf
+```
+mkdir ~/.XBI && vi ~/.XBI/xbi.conf
+```
+example : 
+```
+#Bitcoin Incognito (BTCi) configuration file
+#first of all, let's start in the background
+daemon=1
+#RPC server settings
+server=1
+rpcallowip=127.0.0.1
+rpcuser=BTCiRPC$(pwgen -s 8 -1)
+rpcpassword=$(pwgen -s 32 -1)
+#network settings
+listen=1
+port=7250
+externalip=VPS-IP
+#masternode settings
+masternode=1
+masternodeaddr=VPS-IP:7250
+masternodeprivkey=insertYourWalletGeneratedPrivKeyHere
+```
+
+d) start the XBI daemon 
+```
+xbid
+```
+e) check your local wallet to enable the masternode with appropriate masternode.conf
+```
+alias VPS-IP:port masterbodePrivateKey TXindex X
+```
+
 
 ## NOTE : if you just upgraded from BTCi to XBI, follow these steps : 
 
