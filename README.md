@@ -34,13 +34,9 @@ c) Decompress the tar archive in your $HOME (will create files in ~/bin) :
 tar zxvf xbi-ubuntu-$DISTRIB_RELEASE-$(arch).tar.gz
 ```
 
-d) create ~/.XBI folder and ~/.XBI/xbi.conf
+d) create XBI folder and configuration file :
 ```
-mkdir ~/.XBI && vi ~/.XBI/xbi.conf
-```
-example : 
-```
-#Bitcoin Incognito (XBI) configuration file
+mkdir ~/.XBI && echo "#Bitcoin Incognito (XBI) configuration file
 #first of all, let's start in the background
 daemon=1
 #RPC server settings
@@ -53,9 +49,7 @@ listen=1
 port=7250
 externalip=VPS-IP
 #masternode settings
-masternode=1
-masternodeaddr=VPS-IP:7250
-masternodeprivkey=insertYourWalletGeneratedPrivKeyHere
+masternode=1" > ~/.XBI/xbi.conf
 ```
 #### Note : you need to have the 'pwgen' tool installed for the above example to work
 (if you don't have it yet, type 'sudo apt install -y pwgen')
