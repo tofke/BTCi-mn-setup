@@ -1,18 +1,26 @@
 # XBI-MN-setup
 ## Bitcoin icognito (XBI) masternode setup guide for Ubuntu Linux
 
-Complete setup guide and automated script to be written ... sorry for those not familiar with Linux cli.
+An automated script will be updated soon ... sorry for those not familiar with Linux cli.
 
 #### Note : my previous guide with installation script has moved to https://github.com/tofke/old_btcimn
-(you can refer to it if you need to compare how to send collateral, or use any other guide proposed in the Discord channel) 
 
 If you want to manually install it, you can find binaries of "headless" XBI (xbid, xbi-cli and xbi-tx) herein.
 
-Supported versions include Ubuntu 14.04 (x86_64), 16.04 (x86_64 and aarch64) and 18.04 (x86_64).
+Supported versions include Ubuntu <b>14.04</b> (x86_64), <b>16.04</b> (x86_64 or aarch64) and <b>18.04</b> (x86_64).
 
 ### Quick start guide : 
 
-a) Go to you $HOME directory and download binary for your platform :
+a) Update your VPS and install required dependencies : 
+```
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install -y curl wget pwgen software-properties-common
+sudo add-apt-repository ppa:bitcoin/bitcoin -y
+sudo apt-get install -y libdb4.8 libdb4.8++ libboost-system1.58.0 libboost-filesystem1.58.0 libboost-program-options1.58.0 libboost-thread1.58.0 libssl1.0.0 libminiupnpc10 libevent-2.0-5 libevent-pthreads-2.0-5 libevent-core-2.0-5 
+```
+#### Note : a freshly deployed server will most probably get a new Linux kernel in the updates ... you should reboot before continuing !
+
+b) Go to you $HOME directory and download binary for your platform :
 ```
 cd
 source /etc/lsb-release
@@ -21,12 +29,12 @@ wget https://github.com/tofke/XBI-MN-setup/raw/master/xbi-ubuntu-$DISTRIB_RELEAS
 #### Note : do not right-clic and copy the above URL it would download an HTML file !
 * use the exact same command shown here, or download manually and copy the archive to your VPS
 
-b) Decompress the tar archive in your $HOME (will create files in ~/bin) :
+c) Decompress the tar archive in your $HOME (will create files in ~/bin) :
 ```
 tar zxvf xbi-ubuntu-$DISTRIB_RELEASE-$(arch).tar.gz
 ```
 
-c) create ~/.XBI folder and ~/.XBI/xbi.conf
+d) create ~/.XBI folder and ~/.XBI/xbi.conf
 ```
 mkdir ~/.XBI && vi ~/.XBI/xbi.conf
 ```
@@ -52,11 +60,11 @@ masternodeprivkey=insertYourWalletGeneratedPrivKeyHere
 #### Note : you need to have the 'pwgen' tool installed for the above example to work
 (if you don't have it yet, type 'sudo apt install -y pwgen')
 
-d) start the XBI daemon 
+e) start the XBI daemon 
 ```
 xbid
 ```
-e) check your local wallet to enable the masternode with appropriate masternode.conf
+f) check your local wallet to enable the masternode with appropriate masternode.conf
 ```
 alias VPS-IP:port masterbodePrivateKey TXindex X
 ```
