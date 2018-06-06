@@ -1,15 +1,39 @@
 # XBI-MN-setup
 ## Bitcoin icognito (XBI) masternode setup guide for Ubuntu Linux
 
-An automated script will be updated soon ... sorry for those not familiar with Linux cli.
-
-#### Note : my previous guide with installation script has moved to https://github.com/tofke/old_btcimn
-
-If you want to manually install it, you can find binaries of "headless" XBI (xbid, xbi-cli and xbi-tx) herein.
-
 Supported versions include Ubuntu <b>14.04</b> (x86_64), <b>16.04</b> (x86_64 or aarch64) and <b>18.04</b> (x86_64).
 
-### Quick start guide : 
+### An installation script is available to automatically set up XBI for you : 
+This script will install all dependencies, create a user account (do NOT run XBI as root), and finally download the appropriate version of the Bitcoin Icognito xbi binaries for you. A configuration file will then be created in that user's folder and the daemon will be started. 
+
+a) If you are not already connected as root, become root : 
+```
+sudo su -
+```
+
+b) Make sure you have "wget" installed to download the script :
+```
+apt install -y wget
+```
+
+c) Download the script and start it : 
+```
+wget https://github.com/tofke/XBI-MN-setup/blob/master/install-XBI-Ubuntu.sh && ./install-XBI-Ubuntu.sh
+```
+
+d) Follow the instructions, the script will ask you for : 
+* the masternode's private key (you create it in your local wallet with "masternode genkey")
+* the username you wish to create (it proposes to create a user called 'xbi' by default)
+* you will be prompted to enter a password (twice) for that new user ...
+
+Everything else is done automatically. I will add an example output if you wish to see what it looks like.
+
+#### Note : my previous installation script guide has moved to https://github.com/tofke/old_btcimn
+
+If you want to manually install XBI, you can find the binaries of "headless" XBI (xbid, xbi-cli and xbi-tx) here.
+Beware that right clic on the links above and paste them after wget or curl does not work. This will result in downloading an html file instead of the tar.gz archives targeted behind these links (clic on them in your browser to see full path or follow instructions below). 
+
+### Manual installation guide : 
 
 a) Update your VPS and install required dependencies : 
 ```
@@ -20,7 +44,13 @@ sudo apt-get install -y libdb4.8 libdb4.8++ libboost-system1.58.0 libboost-files
 ```
 #### Note : a freshly deployed server will most probably get a new Linux kernel in the updates ... you should reboot before continuing !
 
-b) Go to you $HOME directory and download binary for your platform :
+b) Create a user to run any software, it is not a good practice to run things as root !
+```
+useradd -m -s /bin/bash NewUserName
+```
+(replace NewUserName with what you want to see)
+
+c) Connect as that new user and download binary for your platform :
 ```
 cd
 source /etc/lsb-release
@@ -29,12 +59,12 @@ wget https://github.com/tofke/XBI-MN-setup/raw/master/xbi-ubuntu-$DISTRIB_RELEAS
 #### Note : do not right-clic and copy the above URL it would download an HTML file !
 * use the exact same command shown here, or download manually and copy the archive to your VPS
 
-c) Decompress the tar archive in your $HOME (will create files in ~/bin) :
+d) Decompress the tar archive in your $HOME (will create files in ~/bin) :
 ```
 tar zxvf xbi-ubuntu-$DISTRIB_RELEASE-$(arch).tar.gz
 ```
 
-d) create XBI folder and configuration file :
+e) create XBI folder and configuration file :
 ```
 mkdir ~/.XBI && echo "#Bitcoin Incognito (XBI) configuration file
 #first of all, let's start in the background
@@ -54,16 +84,18 @@ masternode=1" > ~/.XBI/xbi.conf
 #### Note : you need to have the 'pwgen' tool installed for the above example to work
 (if you don't have it yet, type 'sudo apt install -y pwgen')
 
-e) start the XBI daemon 
+f) start the XBI daemon 
 ```
 xbid
 ```
-f) check your local wallet to enable the masternode with appropriate masternode.conf
+#### Note : with Ubuntu 18.04, you need to source your .profile before if you did not have a folder named "bin" in your $HOME before
+
+g) check your local wallet to enable the masternode with appropriate masternode.conf
 ```
 alias VPS-IP:port masterbodePrivateKey TXindex X
 ```
 
-## NOTE : if you just upgraded from BTCi to XBI, follow these steps : 
+## NOTE : if you want to just upgrade manually from BTCi to XBI, follow these steps : 
 
 1) Connect to your VPS (as the user running the wallet) and stop the masternode : 
 ```
