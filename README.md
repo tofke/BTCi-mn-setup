@@ -4,7 +4,7 @@
 Complete setup guide and automated script to be written ... sorry for those not familiar with Linux cli.
 
 #### Note : my previous guide with installation script has moved to https://github.com/tofke/old_btcimn
-(you can eventually refer to it if you need to compare how to send collateral, or use any other guide proposed in the Discord channel) 
+(you can refer to it if you need to compare how to send collateral, or use any other guide proposed in the Discord channel) 
 
 If you want to manually install it, you can find binaries of "headless" XBI (xbid, xbi-cli and xbi-tx) herein.
 
@@ -18,7 +18,8 @@ cd
 source /etc/lsb-release
 wget https://github.com/tofke/XBI-MN-setup/raw/master/xbi-ubuntu-$DISTRIB_RELEASE-$(arch).tar.gz
 ```
-#### Note : do not right-clic and copy the above URL it would download an HTML file \n use the exact same command shown here
+#### Note : do not right-clic and copy the above URL it would download an HTML file !
+* use the exact same command shown here, or download manually and copy the archive to your VPS
 
 b) Decompress the tar archive in your $HOME (will create files in ~/bin) :
 ```
