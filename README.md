@@ -3,6 +3,9 @@
 
 Complete setup guide and automated script to be written ... sorry for those not familiar with Linux cli.
 
+#### Note : my previous guide with installation script has moved to https://github.com/tofke/old_btcimn
+(you can eventually refer to it if you need to compare how to send collateral, or use any other guide proposed in the Discord channel) 
+
 If you want to manually install it, you can find binaries of "headless" XBI (xbid, xbi-cli and xbi-tx) herein.
 
 Supported versions include Ubuntu 14.04 (x86_64), 16.04 (x86_64 and aarch64) and 18.04 (x86_64).
@@ -155,4 +158,15 @@ The new ticker XBI does take effect at block 50000
 
 (see block explorer at http://explorer.bitcoinincognito.com/)
 
+
+## Feel free to consider a donation if this helped : 
+XBI : B5riAb43z9i3CEVYBK9vjwN1nRF6UsJoze
+
+*Official XBI Discord (masternode channel) : https://discord.gg/NRgMQHJ
+
+(you can find me there as "tof" and let me know if you have any issue with this guide)
+
+# Recommended Tools
+
+- MobaXterm : the best SSH client (and much more) for Windows i know : https://mobaxterm.mobatek.net/download.html
 
