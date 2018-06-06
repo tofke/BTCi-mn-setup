@@ -1,0 +1,113 @@
+tof@mn2:~⟫ ./install-XBI-Ubuntu.sh
+
+*****************************************
+*                                       *
+*      Bitcoin Incognito (XBI)          *
+*      masternode setup by tof          *
+*                                       *
+*****************************************
+
+This installation script will download XBI 3.0.7
+binaries for your version of Ubuntu with all the
+required dependencies for your system.
+
+--> Supported versions are :
+Ubuntu 14.04 (X86_64 CPUs only)
+Ubuntu 16.04 (X86_64 and ARM64)
+Ubuntu 18.04 (X86_64 CPUs only)
+
+
+Before we get started, some tests will be performed to
+try to guess your version of Ubuntu ... some informations will
+then be asked by the script that you will have to answer.
+
+The installation has to be run as root or a priviledged user
+(a user who can run the 'sudo' command, in which case the
+password of that user will be asked if neccesary)
+
+Also, i strongely recommend to run any software with a
+dedicated user account. To do so, this script will propose
+you to create a user whom you can choose the name.
+The default proposition is to create a user 'xbi'.
+(if it is good for your just type enter to accept)
+Please paste your masternode private key :
+===>> enter your masternode's private key <<===
+Installing all required dependencies ... please wait !!!
+(a full detailed log of this installation is written to :
+/tmp/tmp.mHsZCXwKA0/install-XBI_20180606_20h14.log)
+gpg: keyring `/tmp/tmp1n4n85bz/secring.gpg' created
+gpg: keyring `/tmp/tmp1n4n85bz/pubring.gpg' created
+gpg: requesting key 8842CE5E from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmp1n4n85bz/trustdb.gpg: trustdb created
+gpg: key 8842CE5E: public key "Launchpad PPA for Bitcoin" imported
+gpg: no ultimately trusted keys found
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+Downloading XBI for you version (16.04) and CPU architecture (aarch64)
+xbi-ubuntu-16.04-aarch64.tar.gz           100%[==================================================================================>]   2.83M  --.-KB/s    in 0.07s
+Now we will create a new user account to run XBI daemon.
+You can just hit "ENTER" to use the proposed "xbi".
+You will also need to set a password for that user !
+Please choose a username to run XBI [xbi] :
+Creating a dedicated user to run XBI :
+xbi
+Now choose a password for this new user !
+(beware that it can NOT be an empty password ...
+also don't worry if you see nothing when you type)
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Becoming user xbi to copy and run XBI binaries :
+bin/xbi-cli
+bin/xbid
+bin/xbi-tx
+
+Creating the XBI configuration file (in user's home)
+
+-rw-rw-r-- 1 xbi xbi 418 Jun  6 20:17 /home/xbi/.XBI/xbi.conf
+#Bitcoin Incognito (XBI) configuration file
+#first of all, let's start in the background
+daemon=1
+#RPC server settings
+server=1
+rpcallowip=127.0.0.1
+rpcuser=F21yKEA1yltIh8et
+rpcpassword=uwfxdvUiev8WCFVyfOoGvU8z2ZqLzfPn
+#network settings
+listen=1
+port=7250
+externalip=VPSipV4
+#masternode settings
+masternode=1
+#masternodeaddr=VPSipV4:7250
+masternodeprivkey=MasternodePrivateKey
+
+Now starting the daemon
+XBI server starting
+no crontab for xbi
+
+To have xbid started after a reboot, this line was added to your crontab :
+@reboot /home/xbi/bin/xbid
+(run 'crontab -e' and choose your favorite editor to change this)
+
+
+A full log of this setup can be found in /tmp/tmp.mHsZCXwKA0/install-XBI_20180606_20h14.log
+The XBI daemon is started with the user xbi ...
+To connect as that user, type 'sudo su - xbi'
+
+Don't forget to update your local wallet's masternode.conf file as this :
+"alias VPSipV4:7250 MasternodePrivateKey CollateralSendTxid X"
+
+--> "alias" is the name you want to give to your new masternode
+--> "VPSipV4:7250" are the VPS IP address and XBI default port
+--> "CollateralSendTxid" is the output of "masternode outputs"
+--> "X" is the index of this transaction id
+
+Then you can manage your masternode from your local wallet.
+The files created in /tmp/tmp.mHsZCXwKA0 can be deleted if you want ...
+
+Bye, have fun with XBI, and thank you for using my script
+
+ - tof -
+
+
