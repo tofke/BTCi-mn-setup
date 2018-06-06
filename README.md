@@ -18,7 +18,7 @@ apt install -y wget
 
 c) Download the script and start it : 
 ```
-wget https://github.com/tofke/XBI-MN-setup/blob/master/install-XBI-Ubuntu.sh && ./install-XBI-Ubuntu.sh
+wget https://github.com/tofke/XBI-MN-setup/raw/master/install-XBI-Ubuntu.sh && chmod -c u+x install-XBI-Ubuntu.sh && ./install-XBI-Ubuntu.sh
 ```
 
 d) Follow the instructions, the script will ask you for : 
