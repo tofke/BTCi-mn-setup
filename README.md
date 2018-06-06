@@ -23,7 +23,7 @@ wget https://github.com/tofke/XBI-MN-setup/raw/master/xbi-ubuntu-$DISTRIB_RELEAS
 
 b) Decompress the tar archive in your $HOME (will create files in ~/bin) :
 ```
-tar zxvf xbi-ubuntu-<YourVersion>.tar.gz
+tar zxvf xbi-ubuntu-$DISTRIB_RELEASE-$(arch).tar.gz
 ```
 
 c) create ~/.XBI folder and ~/.XBI/xbi.conf
@@ -118,8 +118,9 @@ This will permit the "xbi" tools to see your previously created configuration wi
 6) Go back to your $HOME folder (type 'cd') and download the updated binaries : 
 ```
 cd
-wget -q https://github.com/tofke/BTCi-mn-setup/releases/download/3.0.6/xbi-linux-$(arch).tar.gz
-tar zxvf xbi-linux-$(arch).tar.gz
+source /etc/lsb-release
+wget https://github.com/tofke/XBI-MN-setup/raw/master/xbi-ubuntu-$DISTRIB_RELEASE-$(arch).tar.gz
+tar zxvf xbi-ubuntu-$DISTRIB_RELEASE-$(arch).tar.gz
 ```
 #### NOTE : $(arch) will result on your system's CPU architecture (x86-64 or aarch64)
 
