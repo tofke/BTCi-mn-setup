@@ -9,9 +9,15 @@ Supported versions include Ubuntu 14.04 (x86_64), 16.04 (x86_64 and aarch64) and
 
 ### Quick start guide : 
 
-a) download binary for your platform (see above files)
+a) Go to you $HOME directory and download binary for your platform :
+```
+cd
+source /etc/lsb-release
+wget https://github.com/tofke/XBI-MN-setup/raw/master/xbi-ubuntu-$DISTRIB_RELEASE-$(arch).tar.gz
+```
+#### Note : do not right-clic and copy the above URL it would download an HTML file \n use the exact same command shown here
 
-b) untar in your $HOME (will decompress to ~/bin)
+b) Decompress the tar archive in your $HOME (will create files in ~/bin) :
 ```
 tar zxvf xbi-ubuntu-<YourVersion>.tar.gz
 ```
@@ -22,13 +28,13 @@ mkdir ~/.XBI && vi ~/.XBI/xbi.conf
 ```
 example : 
 ```
-#Bitcoin Incognito (BTCi) configuration file
+#Bitcoin Incognito (XBI) configuration file
 #first of all, let's start in the background
 daemon=1
 #RPC server settings
 server=1
 rpcallowip=127.0.0.1
-rpcuser=BTCiRPC$(pwgen -s 8 -1)
+rpcuser=xbiRPC$(pwgen -s 8 -1)
 rpcpassword=$(pwgen -s 32 -1)
 #network settings
 listen=1
@@ -39,6 +45,8 @@ masternode=1
 masternodeaddr=VPS-IP:7250
 masternodeprivkey=insertYourWalletGeneratedPrivKeyHere
 ```
+#### Note : you need to have the 'pwgen' tool installed for the above example to work
+(if you don't have it yet, type 'sudo apt install -y pwgen')
 
 d) start the XBI daemon 
 ```
@@ -49,15 +57,13 @@ e) check your local wallet to enable the masternode with appropriate masternode.
 alias VPS-IP:port masterbodePrivateKey TXindex X
 ```
 
-
 ## NOTE : if you just upgraded from BTCi to XBI, follow these steps : 
 
 1) Connect to your VPS (as the user running the wallet) and stop the masternode : 
 ```
 btci-cli stop
 ```
-(wait a few seconds)
-check the last line in debug.log : 
+Wait a few seconds, then check the last line in debug.log : 
 ```
 tail -1 .BTCi/debug.log
 ```
